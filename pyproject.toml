@@ -1,0 +1,25 @@
+[project]
+name = "drivemate"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "yeshapan",email = "yesha.pandya@outlook.com"},
+    {name = "Mann-19",email = "tkp2510@gmail.com"},
+    {name = "Aditya-12005",email = "adityahada49@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pygame (>=2.6.1,<3.0.0)",
+    "numpy (>=1.26,<2.0)",
+    "opencv-python (>=4.11.0.86,<5.0.0.0)",
+    "torch (>=2.7.0,<3.0.0)",
+    "torchvision (>=0.22.0,<0.23.0)",
+    "ultralytics (>=8.3.145,<9.0.0)",
+    "mediapipe (>=0.10.21,<0.11.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
