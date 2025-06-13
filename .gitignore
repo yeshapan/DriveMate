@@ -1,0 +1,57 @@
+# Byte-compiled / cache files
+__pycache__/
+*.py[cod]
+*.so
+*.pyd
+*.pyo
+
+# Virtual environments (if any)
+.env/
+.venv/
+env/
+venv/
+
+# Poetry virtualenvs live outside the project by default, so no need to ignore `.venv` unless explicitly inside
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# Log files
+*.log
+
+# Pytest cache
+.cache/
+.pytest_cache/
+
+# VSCode / JetBrains
+.vscode/
+.idea/
+
+# Mac & Windows stuff
+.DS_Store
+Thumbs.db
+
+# Models
+*.pt
+models/
+
+# YOLOv5 specific
+yolov5/runs/
+yolov5/data/*.cache
+yolov5/data/*.jpg
+yolov5/data/*.png
+yolov5/data/*.zip
+yolov5/dataset.yaml  # if you're generating one
+
+# Output images/videos
+inference/output/
+output/
+
+# Ignore large datasets or test media if added
+data/videos/
+data/images/
+data/raw/
+
+# Ignore secrets
+.env.local
+secrets.json
