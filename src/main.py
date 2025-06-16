@@ -2,16 +2,39 @@ import torch
 import matplotlib.pyplot as plt
 import numpy as np
 import cv2
+import os
+import time 
+import uuid
 
 model = torch.hub.load('ultralytics/yolov5', 'yolov5s')
 
-img_url = 'https://imgs.search.brave.com/Ee9YYXlXYvYnNLY1R0Jg6VJy470XXDTRYAdQtMGFWZ0/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5pc3RvY2twaG90/by5jb20vaWQvNDc2/MjM5NDk1L3Bob3Rv/L3RyYWZmaWMtamFt/LW9uLXJ1c2gtaG91/ci1pc3RhbmJ1bC5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/R2V5bHdRUUpmaENs/QkI3MTdmXzhoTGNP/aUFPTnZsWHpMMl9p/Y1lXazJ1MD0'
+IMAGES_PATH = os.path.join('../', 'data', 'images')
+print(IMAGES_PATH)
+labels = ["awake", "drowsy"]
+number_imgs = 20
 
-results = model(img_url)
-print(results)
+cap = cv2.VideoCapture(0)
 
-rendered_img = results.render()[0]
+for label in labels:
+    print(f'Collecting images for {label}')
+    time.sleep(5)
 
-cv2.imshow("YOLO Output", rendered_img)
-cv2.waitKey(0)
+    for img_num in range(number_imgs):
+        print(f'Collecting image {img_num} for {label}')
+
+        ret, frame = cap.read()
+
+        imgname = os.path.join(IMAGES_PATH, label+"."+str(uuid.uuid1())+".jpg")
+
+        cv2.imwrite(imgname, frame)
+        print(f'Image saved as {imgname}')
+
+        cv2.imshow('Image collection', frame)
+
+        time.sleep(2)
+
+        if cv2.waitKey(0) & 0xFF == ord('q'):
+            break
+
+cap.release()
 cv2.destroyAllWindows()
